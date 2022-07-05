@@ -27,9 +27,31 @@ const modificarusuario=async(req,res)=>{
     console.log(response)
 }
 
+//funcion crearpost
+const crearpost=async (req,res)=>{
+const {titulo,author,fecha,contenido} = req.body
+const response = await pool.query('INSERT INTO post(titulo,author,fecha,contenido) VALUES($1,$2,$3,$4)',[
+    titulo,author,fecha,contenido])
+
+    console.log(response);
+}
+
+//funcion editar post
+const editarpost=async(req,res)=>{
+    
+    const {id_post,titulo,author,fecha,contenido}= req.body
+    const response= await pool.query('UPDATE usuario SET titulo= $1,author=$2,fecha=$3,contenido=$4 WHERE id_post =$5',[
+        titulo,author,fecha,contenido,id_post
+    ])
+
+    console.log(response)
+}
+
  
 module.exports={
 
     modificarusuario,
-    crearusuario
+    crearusuario,
+    crearpost,
+    editarpost
 }
