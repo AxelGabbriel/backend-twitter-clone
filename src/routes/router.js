@@ -4,7 +4,7 @@ const usuario = require('../controllers/usuario')
 const post =require('../controllers/post')
 //rutas usuario
 router.post('/registro',usuario.register)
-router.get('/modificar',usuario.modificar)
+router.put('/modificar/:id',usuario.modificar)
 router.get('/login',usuario.login)
 
 

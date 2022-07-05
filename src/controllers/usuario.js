@@ -1,5 +1,5 @@
 const crearusuario = require('../database')
-
+const modificarusuario= require('../database')
 //constante vacia para las instancias
 const usuario = {}
 
@@ -19,8 +19,15 @@ usuario.register= (req,res)=>{
 }
 
 usuario.modificar=(req,res)=>{
+   try{
+   modificarusuario.modificarusuario(req,res);
     res.send('modificar usuario')
+}catch(e){
+    console.log(e)
 }
+
+};
+    
 
 usuario.login=(req,res)=>{
     res.send('logear usuario')
