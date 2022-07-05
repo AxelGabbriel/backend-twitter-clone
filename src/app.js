@@ -3,7 +3,12 @@ const {route}= require('./routes/router')
 
 const app = express()
 
-app.use(require('./routes/router'))
+//middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+//router
+app.use(require('./routes/router'));
 
 app.listen(5000, ()=>{
 

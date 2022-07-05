@@ -1,14 +1,13 @@
+const crearusuario = require('../database')
+
+//constante vacia para las instancias
 const usuario = {}
 
-usuario.index = (req,res)=>{
-    res.send('la conexion ha sido correcta')
-
-}
 
 usuario.register= (req,res)=>{
-
-
+ crearusuario.crearusuario();
     res.send('resgistro de los usuarios')
+    console.log(`${req.body}`);
 }
 
 usuario.modificar=(req,res)=>{
@@ -22,7 +21,4 @@ usuario.login=(req,res)=>{
 usuario.borrar=(req,res)=>{
     res.send('borrar usuario')
 }
-
-
-
 module.exports= usuario

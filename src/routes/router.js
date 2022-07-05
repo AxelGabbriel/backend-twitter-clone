@@ -3,7 +3,7 @@ const router = express.Router()
 const usuario = require('../controllers/usuario')
 const post =require('../controllers/post')
 //rutas usuario
-router.get('/registro',usuario.register)
+router.post('/registro',usuario.register)
 router.get('/modificar',usuario.modificar)
 router.get('/login',usuario.login)
 router.get('/borrar',usuario.borrar)
