@@ -5,9 +5,17 @@ const usuario = {}
 
 
 usuario.register= (req,res)=>{
- crearusuario.crearusuario();
+ try{
+ crearusuario.crearusuario(req,res);
     res.send('resgistro de los usuarios')
-    console.log(`${req.body}`);
+
+
+ }catch(e){
+
+    console.log(e);
+ }
+   
+   
 }
 
 usuario.modificar=(req,res)=>{
@@ -18,7 +26,5 @@ usuario.login=(req,res)=>{
     res.send('logear usuario')
 }
 
-usuario.borrar=(req,res)=>{
-    res.send('borrar usuario')
-}
+
 module.exports= usuario

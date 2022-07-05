@@ -6,7 +6,7 @@ const post =require('../controllers/post')
 router.post('/registro',usuario.register)
 router.get('/modificar',usuario.modificar)
 router.get('/login',usuario.login)
-router.get('/borrar',usuario.borrar)
+
 
 //rutas post
 router.get('/crear-post',post.crear)
