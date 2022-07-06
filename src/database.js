@@ -76,10 +76,39 @@ const buscarauthorpost= async(req,res)=>{
     console.log(response.rows);
 } 
 
+//like por post
+const likeporpost=async(req,res)=>{
+    const id_post=req.params.id_post
+    const response= await pool.query('SELECT* FROM liked WHERE id_post=$1',[id_post])
+    console.log(response.rowCount);
 
 
+}
+//like por usuario
+const likeporusuario=async(req,res)=>{
+    const id_usuario=req.params.id_usuario
+    const response= await pool.query('SELECT * FROM liked WHERE id_usuario=$1',[id_usuario])
+    console.log(response.rowCount)
+}
+//crear likes para post
+const crearlikepost=async (req,res)=>{
+    const {like_id,id_post} = req.body
+    const response = await pool.query('INSERT INTO liked(like_id,id_post) VALUES($1,$2)',[
+        like_id,id_post])
+      console.log(response);
+    }
+
+//crear likes para usuario
+const crearlikeusuario=async (req,res)=>{
+    const {like_id,id_usuario} = req.body
+    const response = await pool.query('INSERT INTO liked(like_id,id_usuario) VALUES($1,$2)',[
+        like_id,id_usuario])
+      console.log(response);
+    }
 
 module.exports={
+    crearlikeusuario,
+    crearlikepost,
     modificarusuario,
     crearusuario,
     crearpost,
@@ -87,5 +116,7 @@ module.exports={
     buscaridusuario,
     buscarnombreusuario,
     buscaridpost,
-    buscarauthorpost
+    buscarauthorpost,
+    likeporpost,
+    likeporusuario
 }
