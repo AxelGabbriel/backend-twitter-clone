@@ -1,7 +1,7 @@
 const crearpost= require('../database')
 const editarpost=require('../database')
-
-
+const buscaridpost=require('../database')
+const buscarauthorpost=require('../database')
 const post={}
 
 post.crear=(req,res)=>{
@@ -36,5 +36,24 @@ post.like=(req,res)=>{
     res.send('dar like')
 }
 
+post.buscarid=(req,res)=>{
+    try{
+        buscaridpost.buscaridpost(req,res);
+        res.send('direccion para buscar post')
+    }catch(e){
+        console.log(e)
+    }
+    
+}
+
+post.buscarauthor=(req,res)=>{
+    try{
+        buscarauthorpost.buscarauthorpost(req,res)
+        res.send('direccion para buscar post por nombre de author')
+    }catch(e){
+        console.log(e)
+     }
+    
+}
 
 module.exports= post

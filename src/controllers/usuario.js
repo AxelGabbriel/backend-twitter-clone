@@ -1,5 +1,7 @@
 const crearusuario = require('../database')
 const modificarusuario= require('../database')
+const buscaridusuario=require('../database')
+const buscarnombreusuario= require('../database')
 //constante vacia para las instancias
 const usuario = {}
 
@@ -28,7 +30,40 @@ usuario.modificar=(req,res)=>{
 
 };
     
+usuario.buscarid=(req,res)=>{
+ try{
+    buscaridusuario.buscaridusuario(req,res);
+    res.send('buscar por id')
 
+
+ }catch(e){
+    console.log(e)
+
+
+ }
+
+}
+
+
+usuario.buscarnombreusuario=(req,res)=>{
+    try{
+       
+        buscarnombreusuario.buscarnombreusuario(req, res)
+         res.send('aqui se busca el usuario por nombre')
+    }catch(e){
+        console.log(e)
+    }
+
+    
+}
+
+
+
+
+
+
+
+//funcion para el login 
 usuario.login=(req,res)=>{
     res.send('logear usuario')
 }
