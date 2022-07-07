@@ -44,6 +44,13 @@ like.crearlikeusuario=(req,res)=>{
 
 }
 
+like.borrarlikespost=(req,res)=>{
+    try{like.borrarlikespost(req,res)}catch(e){console.log(e)}
+}
+
+like.borrarlikesusuarios=(req,res)=>{
+    try{like.borrarlikesusuarios(req,res)}catch(e){console.log(e)}
+}
 
 
 module.exports = like;

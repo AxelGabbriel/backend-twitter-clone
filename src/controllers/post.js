@@ -8,7 +8,7 @@ post.crear=(req,res)=>{
    try{
 
     crearpost.crearpost(req,res);
-    res.json(response)
+    
 
 
    }catch(e){
@@ -23,7 +23,7 @@ post.editar=(req,res)=>{
 
     try{
        editarpost.editarpost(req,res);
-       res.json(response)
+       
 
     }catch(e){
         console.log(e)
@@ -36,7 +36,7 @@ post.editar=(req,res)=>{
 post.buscarid=(req,res)=>{
     try{
         buscaridpost.buscaridpost(req,res);
-        res.json(response)
+    
     }catch(e){
         console.log(e)
     }
@@ -46,7 +46,7 @@ post.buscarid=(req,res)=>{
 post.buscarauthor=(req,res)=>{
     try{
         buscarauthorpost.buscarauthorpost(req,res)
-        res.json(response)
+        
     }catch(e){
         console.log(e)
      }
