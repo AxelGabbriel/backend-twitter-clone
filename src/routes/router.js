@@ -5,8 +5,10 @@ const post =require('../controllers/post')
 const like = require('../controllers/like')
 const retweet=require('../controllers/retweet')
 const follow=require('../controllers/follow')
+//const passport= require('../passport')
+const passport=require('passport')
+//const login = require('../controllers/login')
 //rutas usuario
-router.post('/registro',usuario.register)
 router.put( '/modificar/:id',usuario.modificar)
 router.get('/buscar-usuario/:id_usuario',usuario.buscarid)
 router.get('/buscar-nombre/:nombre',usuario.buscarnombreusuario)
@@ -21,7 +23,7 @@ router.get('/like-post/:id_post',like.post)
 router.post('/crearlike-post',like.crearlikepost)
 router.post('/crearlike-usuario',like.crearlikeusuario)
 router.delete('/borrarlikes-post/:id_post',like.borrarlikespost)
-router.delete('/borrarlikes-usuario/:id_usuario',like.borrarlikesusuario)
+router.delete('/borrarlikes-usuario/:id_usuario',like.borrarlikesusuarios)
 //rutas para retweet
 router.get('/retweet-post/:id_post',retweet.post)
 router.post('/retweet-crear', retweet.crear)
@@ -32,6 +34,15 @@ router.get('/buscar-seguidor/:id_user1',follow.obtenerseguidor)
 router.get('/buscar-seguido/:id_user2',follow.obtenerseguido)
 router.delete('/borrar-seguidor/:id_user1',follow.borraraseguidor)
 router.delete('/borrar-seguido/:id_user2',follow.borraraseguido)
-//login
+//registro y login
+router.post('/registro',usuario.register)
+router.post('/login',(req,res)=>{
+    passport.Authenticator('local.inicio',{
+        successRedirect:'/profile',
+        failureRedirect:'/login',
+        failureFlash:true
+    })
+})
+
 
 module.exports = router
