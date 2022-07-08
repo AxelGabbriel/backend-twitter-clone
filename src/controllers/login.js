@@ -1,14 +1,8 @@
-const login= {}
-const passport=require('passport')
+login={}
 
 
- login.autenticar=(req,res)=>{
-  passport.authenticate('local.inicio'), {
-
-    successRedirect: '/perfil',
-  failureRedirect:'/login',
-  failureFlash:true
-  }
-  res.send('recibido')
-   
+login.autenticar=(req,res)=>{
+  res.send('logear')
 }
+
+module.exports= login
