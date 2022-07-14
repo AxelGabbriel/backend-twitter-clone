@@ -12,7 +12,6 @@ usuario.register= (req,res)=>{
  crearusuario.crearusuario(req,res);
 
 
-
  }catch(e){
 
     console.log(e);
