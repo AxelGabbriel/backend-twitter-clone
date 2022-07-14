@@ -5,10 +5,10 @@ const { Pool } = require('pg');
 const helpers =require('./helpers')
 
 const config={
-  user:'postgres',
-  host:'localhost',
-  password:'axel',
-  database:'fenix'};
+  user:'tfkzbfkhvyyogq',
+  host:'lec2-54-87-179-4.compute-1.amazonaws.com',
+  password:'516addb3081867d7455ecdee1b474eac4c7c8bed7f5a140523f445cff164eff9',
+  database:'d88nc35tlkcnon'};
   
   const pool = new Pool(config); 
   
@@ -30,7 +30,7 @@ const config={
          const validpassword= await helpers.compararclave(password,newuser.clave) 
         
          if(validpassword){
-          //password===newuser.clave
+          
           done(null,newuser,console.log('bienvenido'))
           user.id=newuser.id_usuario
           passport.serializeUser((user,done)=>{
