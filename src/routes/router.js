@@ -5,8 +5,8 @@ const post =require('../controllers/post')
 const like = require('../controllers/like')
 const retweet=require('../controllers/retweet')
 const follow=require('../controllers/follow')
-const login=require('../controllers/login')
-
+const passport=require('passport')
+const { passportAuth } = require('../middlewares')
 
 //rutas usuario
 router.put( '/modificar/:id',usuario.modificar)
@@ -36,7 +36,12 @@ router.delete('/borrar-seguidor/:id_user1',follow.borraraseguidor)
 router.delete('/borrar-seguido/:id_user2',follow.borraraseguido)
 //registro y login
 router.post('/registro',usuario.register)
-router.get('/login',login.autenticar)
 
+
+router.post('/login', passportAuth)
+
+router.get('/perfil',(req,res)=>{
+    res.send('perfil')
+})
 
 module.exports = router

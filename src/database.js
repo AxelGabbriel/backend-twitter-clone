@@ -1,6 +1,6 @@
 const {Pool}= require('pg');
 const usuario = require('./controllers/usuario');
-
+const helpers= require('./helpers')
 const config={
 user:'postgres',
 host:'localhost',
@@ -11,13 +11,28 @@ const pool = new Pool(config);
 
 //funcion de crear usuario para registro
 const crearusuario= async(req,res)=>{
-const { username,bio,correo,birthday,nombre,direccion,clave } = req.body;
-const response = await pool.query('INSERT INTO usuario( username,bio,correo,birthday,nombre,direccion,clave) VALUES($1,$2,$3,$4,$5,$6,$7)', [
-    username,bio,correo,birthday,nombre,direccion,clave])
-  console.log(response);
-  res.json(response.rows)
-}
+    
+const  { 
+     username,
+     bio,
+     correo,
+     birthday,
+     nombre,                                  // user.username,user.bio,user.correo,user.birthday,user.nombre,user.direccion,user.clave
+     direccion,
+     clave
+      }= req.body;
+      const passwordencriptado= await helpers.encryptPassword(clave);
+       const result= await pool.query('INSERT INTO usuario(username,bio,correo,birthday,nombre,direccion,clave) VALUES($1,$2,$3,$4,$5,$6,$7)', [
+      username,bio,correo,birthday,nombre,direccion,passwordencriptado ])
+  
+   
+     
 
+
+   console.log(result)
+    res.json(result.rows)
+   
+}
 //funcion para actualizar usuario
 const modificarusuario=async(req,res)=>{
     
@@ -193,6 +208,8 @@ const crearseguidor=async (req,res)=>{
     }
 
 module.exports={
+     pool, 
+    config,   
     eliminarseguido,
     eliminarseguidor,
     eliminarlikeusuario,
