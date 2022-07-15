@@ -29,9 +29,8 @@ app.use(passport.initialize())
 app.use(passport.session());
 //router
 app.use(require('./routes/router'));
-
-app.listen(5000, ()=>{
-
+const port =process.env.PORT || 5000;
+app.listen(port, ()=>{
     console.log('servidor activo en puerto 5000')
 })
 
