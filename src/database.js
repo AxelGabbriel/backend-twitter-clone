@@ -3,7 +3,8 @@ const helpers= require('./helpers')
 const config={
     connectionString: process.env.DATABASE_URL,
   max:500,
-  min:100
+  min:100,
+  ssl:{rejectUnauthorized:false}
 };
 
 const pool = new Pool(config);

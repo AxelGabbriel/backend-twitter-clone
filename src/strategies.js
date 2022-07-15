@@ -7,8 +7,8 @@ const config={
   
   connectionString: process.env.DATABASE_URL,
   max:500,
-  min:100
-  
+  min:100,
+  ssl:{rejectUnauthorized:false}
   //user:'tfkzbfkhvyyogq',
   //host:'lec2-54-87-179-4.compute-1.amazonaws.com',
   //password:'516addb3081867d7455ecdee1b474eac4c7c8bed7f5a140523f445cff164eff9',
