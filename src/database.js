@@ -16,7 +16,8 @@ const  {
      bio,
      correo,
      birthday,
-     nombre,                                 
+     nombre, 
+     direccion,                                
      clave
       }= req.body;
       const passwordencriptado= await helpers.encryptPassword(clave);
