@@ -4,7 +4,9 @@ const config={
     user:'tfkzbfkhvyyogq',
     host:'lec2-54-87-179-4.compute-1.amazonaws.com',
     password:'516addb3081867d7455ecdee1b474eac4c7c8bed7f5a140523f445cff164eff9',
-    database:'d88nc35tlkcnon'};
+    database:'d88nc35tlkcnon',
+    ssl:{rejectUnauthorized:false}
+};
 
 const pool = new Pool(config);
 
